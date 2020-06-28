@@ -6,9 +6,9 @@ using Microsoft.Azure.EventGrid.Models;
 
 public class Program
 {
-    private const string topicEndpoint = "https://hrtopicsidney.eastus-1.eventgrid.azure.net/api/events";
+    private const string topicEndpoint = "https://hrtopicdennes.uksouth-1.eventgrid.azure.net/api/events";
 
-    private const string topicKey = "zYOUPinkD7kmPEsFQQ4dUMqs2TXEO93goDfze0SbC5c=";
+    private const string topicKey = "pKcJXhjqvo8oUVo5LgwjB+Y1zS5rIXs2uLYycOojWTU=";
 
     public static async Task Main(string[] args)
     {
@@ -17,7 +17,7 @@ public class Program
 
         List<EventGridEvent> events = new List<EventGridEvent>();
 
-        var firstPerson = new
+        var firstPerson = new Employee()
         {
             FullName = "Alba Sutton",
             Address = "4567 Pine Avenue, Edison, WA 97202"
@@ -34,7 +34,7 @@ public class Program
         };
         events.Add(firstEvent);
 
-        var secondPerson = new
+        var secondPerson = new Employee()
         {
             FullName = "Alexandre Doyon",
             Address = "456 College Street, Bow, WA 98107"
@@ -56,4 +56,12 @@ public class Program
 
         Console.WriteLine("Events published");
     }
+
+    [Serializable]
+    public class Employee
+    {
+        public string FullName {get; set; }
+        public string Address {get; set;}
+    }
+
 }
